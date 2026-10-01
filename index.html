@@ -76,7 +76,7 @@
 
         /* Pricing Section */
         .pricing { padding: 80px 0; background: #f8fafc; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
         .pricing-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 20px; padding: 40px; position: relative; transition: all 0.3s; }
         .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
         .pricing-card.featured { border-color: #3b82f6; box-shadow: 0 10px 40px rgba(59,130,246,0.15); }
@@ -145,6 +145,9 @@
         .social-links a:hover { background: #3b82f6; color: white; }
 
         /* Mobile */
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .pricing-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
@@ -372,6 +375,23 @@
                     <li>Minute overage at $0.60/min</li>
                 </ul>
                 <a href="https://platform.dialogixvoiceai.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Get Started</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Done For You</h3>
+                <p class="subtitle">Full Service Setup & Management</p>
+                <div class="pricing-price">Custom</div>
+                <p class="pricing-setup">Let's talk about your needs</p>
+                <ul class="pricing-features">
+                    <li>Everything in Professional</li>
+                    <li>Custom voice agent build</li>
+                    <li>Done-for-you setup & training</li>
+                    <li>White-glove onboarding</li>
+                    <li>Dedicated account manager</li>
+                    <li>Priority phone & email support</li>
+                    <li>Custom integrations</li>
+                    <li>Monthly strategy reviews</li>
+                </ul>
+                <a href="mailto:sales@dialogixvoiceai.com?subject=Done%20For%20You%20Pricing%20Inquiry" class="btn btn-primary">Contact Sales</a>
             </div>
         </div>
     </div>
