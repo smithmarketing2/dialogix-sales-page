@@ -641,18 +641,25 @@
         data.phone = fullPhone;
         delete data.countryCode;
         
-        // TODO: Replace with your Google Apps Script URL or webhook endpoint
-        console.log('Form submitted:', data);
+        // Send to Google Sheets
+        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Lead saved:', result);
+        })
+        .catch(error => {
+            console.error('Error saving lead:', error);
+        });
         
         // Show success message
         form.style.display = 'none';
         successDiv.style.display = 'block';
-        
-        // Optional: Send to Google Sheets
-        // fetch('YOUR_GOOGLE_SCRIPT_URL', {
-        //     method: 'POST',
-        //     body: JSON.stringify(data)
-        // });
     });
 </script>
 
