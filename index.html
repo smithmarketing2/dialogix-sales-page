@@ -99,6 +99,18 @@
         .privacy-text { text-align: center; font-size: 13px; color: #94a3b8; margin-top: 20px; }
         .privacy-text a { color: #3b82f6; text-decoration: none; }
 
+        /* SMS Consent Checkbox */
+        .sms-consent { margin-bottom: 20px; }
+        .checkbox-label { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; position: relative; }
+        .checkbox-label input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+        .checkmark { width: 20px; height: 20px; min-width: 20px; border: 2px solid #cbd5e1; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin-top: 2px; }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark { background: #3b82f6; border-color: #3b82f6; }
+        .checkmark::after { content: "✓"; color: white; font-size: 14px; font-weight: 700; display: none; }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after { display: block; }
+        .consent-text { font-size: 13px; color: #475569; line-height: 1.6; font-weight: 400; }
+        .consent-text a { color: #3b82f6; text-decoration: none; }
+        .consent-text a:hover { text-decoration: underline; }
+
         /* Footer */
         footer { padding: 60px 0 30px; background: #0f172a; color: #94a3b8; }
         .footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
@@ -583,6 +595,14 @@
                     </div>
                 </div>
                 
+                <div class="form-group sms-consent">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="smsConsent" name="smsConsent" required>
+                        <span class="checkmark"></span>
+                        <span class="consent-text">I agree to receive SMS messages from Dialogix Voice AI regarding account notifications, customer support, appointments, and service updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>.</span>
+                    </label>
+                </div>
+                
                 <button type="submit" class="btn btn-primary form-submit">Request My Demo</button>
                 
                 <p class="privacy-text">By submitting, you agree to our <a href="#">Privacy Policy</a> and to receive communications from Dialogix.</p>
@@ -602,6 +622,14 @@
         e.preventDefault();
         const form = this;
         const successDiv = document.getElementById('formSuccess');
+        
+        // Validate SMS consent
+        const smsConsent = document.getElementById('smsConsent');
+        if (!smsConsent.checked) {
+            alert('Please agree to receive SMS messages to continue.');
+            smsConsent.focus();
+            return;
+        }
         
         // Collect form data
         const formData = new FormData(form);
